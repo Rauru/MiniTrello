@@ -55,7 +55,40 @@ namespace MiniTrello.Api.Controllers
             }
             throw new BadRequestException("Hubo un error al guardar el usuario");
         }
-    }
+
+        [POST("Edit")]
+        public HttpResponseMessage EditProfile([FromBody] AccountRegisterModel model)
+        {
+            if (model.Password != model.ConfirmPassword)
+            {
+                throw new BadRequestException("Claves no son iguales");
+            }
+            Account account = _mappingEngine.Map<AccountRegisterModel, Account>(model);
+            Account accountCreated = _writeOnlyRepository.Update(account);
+            if (accountCreated != null)
+            {
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+            throw new BadRequestException("Hubo un error al guardar el usuario");
+        }
+
+        
+        // Terminar
+       // [POST("Invite")]
+        //public HttpResponseMessage Invite([FromBody] InviteModel model)
+        //{
+       
+          //  Account account = _mappingEngine.Map<InviteModel, Account>(model);
+            //Board board = _mappingEngine.Map<BoardModel, Board>(model);
+
+            //Account invitedAccount = _writeOnlyRepository.Create(account);
+            //if (invitedAccount != null)
+            //{
+            //    return new HttpResponseMessage(HttpStatusCode.OK);
+            //}
+            //throw new BadRequestException("Hubo un error al Invitar al usuario");
+        //}
+    //}
 
     public class BadRequestException : HttpResponseException
     {
@@ -72,5 +105,11 @@ namespace MiniTrello.Api.Controllers
             
             this.Response.ReasonPhrase = errorMessage;
         }
+    }
+
+    public class InviteModel
+    {
+        public string FirstName { get; set; }
+        public long Id { get; set; }
     }
 }

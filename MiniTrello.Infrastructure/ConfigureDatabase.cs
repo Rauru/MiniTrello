@@ -8,11 +8,11 @@ namespace MiniTrello.Infrastructure
 {
     public class ConfigureDatabase : IBootstrapperTask
     {
-        readonly ContainerBuilder container;
+        readonly ContainerBuilder _container;
 
         public ConfigureDatabase(ContainerBuilder containerBuilder)
         {
-            container = containerBuilder;
+            _container = containerBuilder;
         }
 
         #region IBootstrapperTask Members
@@ -20,9 +20,9 @@ namespace MiniTrello.Infrastructure
         public void Run()
         {
             MsSqlConfiguration databaseConfiguration = MsSqlConfiguration.MsSql2008.ShowSql().
-                ConnectionString(x => x.FromConnectionStringWithKey("MiniTrello.Remote"));
+                ConnectionString(x => x.FromConnectionStringWithKey("MiniTrello.Local"));
 
-            container.Register(c => c.Resolve<ISessionFactory>().OpenSession()).As
+            _container.Register(c => c.Resolve<ISessionFactory>().OpenSession()).As
                 <ISession>()
                 .InstancePerLifetimeScope()
                 .OnActivating(c =>
@@ -40,7 +40,7 @@ namespace MiniTrello.Infrastructure
                     c.Dispose();
                 });
 
-            container.Register(c =>
+            _container.Register(c =>
                 new SessionFactoryBuilder(new MappingScheme(), databaseConfiguration).Build())
                 .SingleInstance()
                 .As<ISessionFactory>();
