@@ -9,7 +9,7 @@ namespace MiniTrello.Domain.Services
     {
         T First<T>(Expression<Func<T, bool>> query) where T : class, IEntity;
         T GetById<T>(long id) where T : class, IEntity;
-        // GetByName<T>(string firstName) where T : class, IEntity;
+        T GetByName<T>(string firstName) where T : class, IEntity;
         T Getbyemail<T>(string email) where T : class, IEntity;
         IQueryable<T> Query<T>(Expression<Func<T, bool>> expression) where T : class, IEntity;
 
