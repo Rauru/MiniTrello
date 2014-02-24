@@ -17,6 +17,7 @@ namespace MiniTrello.Data
             _session = session;
         }
 
+
         public T First<T>(Expression<Func<T, bool>> query) where T : class, IEntity
         {
             T firstOrDefault = _session.Query<T>().FirstOrDefault(query);
@@ -33,6 +34,13 @@ namespace MiniTrello.Data
         {
             //throw new NotImplementedException();
             var item = _session.Get<T>(email);
+            return item;
+        }
+
+        public T GetByName<T>(string firstName) where T : class, IEntity
+        {
+            //if (firstName == null) throw new ArgumentNullException("firstName");
+            var item = _session.Get<T>(firstName);
             return item;
         }
 
