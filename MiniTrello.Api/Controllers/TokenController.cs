@@ -12,7 +12,7 @@ namespace MiniTrello.Api.Controllers
     {
         //
         // GET: /Token/
-        public string CalculateMD5Hash(string input)
+       /* public string CalculateMd5Hash(string input)
         {
             // step 1, calculate MD5 hash from input
             MD5 md5 = MD5.Create();
@@ -26,9 +26,31 @@ namespace MiniTrello.Api.Controllers
                 sb.Append(t.ToString("X2"));
             }
             return sb.ToString();
-        }
+        }*/
        // public ActionResult Index()
         //{return View();}
+        
 
+        public string Createtoken(string identifier)
+        {
+            Guid id;
+            try
+            {
+                id = new Guid(Request.QueryString[identifier]);
+            }
+            catch
+            {
+                id = Guid.Empty;
+            }
+            return id.ToString();
+        }
+
+        public string Gettoken(Guid token)
+        {
+            string uuid = token.ToString();
+
+            return uuid;
+
+        }
     }
 }

@@ -29,6 +29,13 @@ namespace MiniTrello.Data
             return item;
         }
 
+        public T Getbyemail<T>(string email) where T : class, IEntity
+        {
+            //throw new NotImplementedException();
+            var item = _session.Get<T>(email);
+            return item;
+        }
+
         public IQueryable<T> Query<T>(Expression<Func<T, bool>> expression) where T : class, IEntity
         {
             return _session.Query<T>().Where(expression);

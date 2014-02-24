@@ -17,7 +17,7 @@ namespace MiniTrello.Domain.Entities
         public virtual long Id { get; set; }
         public virtual bool IsArchived { get; set; }
 
-        public virtual IEnumerable<Board> Members { get { return _lanes; } }
+        public virtual IEnumerable<Board> Lanes { get { return _lanes; } }
         public virtual void Addlane(Board lane)
         {
             if (!_lanes.Contains(lane))

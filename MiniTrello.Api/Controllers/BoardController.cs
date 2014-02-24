@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections;
+using System.Data.Entity;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -66,12 +67,14 @@ namespace MiniTrello.Api.Controllers
         }
 
         [POST("members")]
-        public Board Membersview([FromBody] Board model)
+        public IEnumerable Membersview([FromBody] Board model)
         {
 
             Board board = _mappingEngine.Map<Board, Board>(model);
             Board boardmembers = _readOnlyRepository.GetById<Board>(board.Id);
-            return boardmembers;
+            
+            IEnumerable members = boardmembers.Members;
+            return members;
             
         }
 
