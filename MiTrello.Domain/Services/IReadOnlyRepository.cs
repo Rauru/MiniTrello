@@ -13,6 +13,6 @@ namespace MiniTrello.Domain.Services
         T Getbyemail<T>(string email) where T : class, IEntity;
         IQueryable<T> Query<T>(Expression<Func<T, bool>> expression) where T : class, IEntity;
 
-        Account GetById<T1, T2>(global::MiniTrello.Api.Models.AccountRegisterModel model);
+        //Account GetById<T1, T2>(global::MiniTrello.Api.Models.AccountRegisterModel model);
     }
 }
