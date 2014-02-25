@@ -79,7 +79,7 @@ namespace MiniTrello.Api.Controllers
             throw new BadRequestException("Hubo un error al guardar el usuario");
         }
 
-        [PUT("edit")]
+        [PUT("edit/{accessToken}")]
         public HttpResponseMessage EditProfile([FromBody] AccountUpdateModel model, string accessToken)
         {
             //var accountToedit = _readOnlyRepository.GetById<Account>(model.Id);
