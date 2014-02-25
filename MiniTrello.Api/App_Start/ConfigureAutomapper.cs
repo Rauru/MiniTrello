@@ -21,10 +21,7 @@ namespace MiniTrello.Api
             cfg.Configure();
             cfg.AddAssembly(typeof(aClassFromYourProject).Assembly);
             new SchemaExport(cfg).Execute(false, true, false, false); */
-            var cfg = new NHibernate.Cfg.Configuration();
-            cfg.Configure();
-            cfg.AddAssembly(typeof(AnEntityInYourMappingLib).Assembly);
-            new NHibernate.Tool.hbm2ddl.SchemaExport(cfg).Execute(false, true, false, false);
+            
         }
     }
 }
