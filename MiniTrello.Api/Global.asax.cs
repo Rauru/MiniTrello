@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -9,6 +11,8 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using MiniTrello.Api.Controllers;
+using MiniTrello.Api.Models;
+using MiniTrello.Domain.Entities;
 using MiniTrello.Infrastructure;
 
 namespace MiniTrello.Api
@@ -27,6 +31,8 @@ namespace MiniTrello.Api
             //RouteConfig.RegisterRoutes(RouteTable.Routes);
             BuildContainer();
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
+            
         }
 
         public IContainer BuildContainer()

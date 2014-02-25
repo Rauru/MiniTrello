@@ -32,6 +32,7 @@ namespace MiniTrello.Api
                         "~/Content/themes/base/jquery.ui.accordion.css",
                         "~/Content/themes/base/jquery.ui.autocomplete.css",
                         "~/Content/themes/base/jquery.ui.button.css",
+                        //"/scripts.controllers.accountcontrollers.js",
                         "~/Content/themes/base/jquery.ui.dialog.css",
                         "~/Content/themes/base/jquery.ui.slider.css",
                         "~/Content/themes/base/jquery.ui.tabs.css",

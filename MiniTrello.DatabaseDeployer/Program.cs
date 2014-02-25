@@ -15,7 +15,7 @@ namespace MiniTrello.DatabaseDeployer
         {
             MsSqlConfiguration databaseConfiguration = MsSqlConfiguration.MsSql2008.ShowSql().
                // ConnectionString(x => x.FromConnectionStringWithKey("MiniTrello.remote"));
-                ConnectionString(x => x.FromConnectionStringWithKey("MiniTrello.Local"));
+                ConnectionString(x => x.FromConnectionStringWithKey("MiniTrello.Remote"));
 
             DomainDrivenDatabaseDeployer.DatabaseDeployer dd = null;
             ISessionFactory sessionFactory = new SessionFactoryBuilder(new MappingScheme(), databaseConfiguration)

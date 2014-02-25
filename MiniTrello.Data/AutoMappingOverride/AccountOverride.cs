@@ -18,12 +18,7 @@ namespace MiniTrello.Data.AutoMappingOverride
              //    .Inverse()
              //    .Access.CamelCaseField(Prefix.Underscore);
 
-            /////////////////////////////////////////////////////////////////////////
-            var cfg = new NHibernate.Cfg.Configuration();
-            cfg.Configure();
-            cfg.AddAssembly(typeof(Account).Assembly);
-            new NHibernate.Tool.hbm2ddl.SchemaExport(cfg).Execute(false, true, false);
-            /////////////////////////////////////////////////////////////////////////
+            
         }
     }
 }

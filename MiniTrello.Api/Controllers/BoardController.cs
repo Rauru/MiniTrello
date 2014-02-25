@@ -66,7 +66,7 @@ namespace MiniTrello.Api.Controllers
             throw  new BadRequestException("Hubo un Error al Cambiar el Nombre");
         }
 
-        [POST("members")]
+        [GET("members/{accesstoken}")]
         public IEnumerable Membersview([FromBody] Board model)
         {
 

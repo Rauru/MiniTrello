@@ -47,6 +47,18 @@ namespace MiniTrello.Api.Controllers
             throw new BadRequestException("Hubo un error al guardar la Card");
         }
 
+        [PUT("/changecardname/{accesstoken}")]
+        public HttpResponseMessage Changename([FromBody] CardModel model)
+        {
+            Card card = _mappingEngine.Map<CardModel, Card>(model);
+            Card updatedCard = _writeOnlyRepository.Update(card);
+            if (updatedCard != null)
+            {
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+            throw new BadRequestException("Hubo un Error al Cambiar el Nombre");
+        }
+
         [System.Web.Mvc.AcceptVerbs(new[] { "DELETE" })]
         [DELETE("cards/{accessToken}")]
         public CardModel Archive(string accessToken, [FromBody] cardArchiveModel model)

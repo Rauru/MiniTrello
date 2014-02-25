@@ -6,6 +6,7 @@ namespace MiniTrello.Domain.Entities
     public class Board : IEntity
     {
         private readonly  IList<Account> _members = new List<Account>();
+        private readonly IList<Lane> _lanes = new List<Lane>();
         
         //public virtual irtual Account Admind { get; set; }
         public virtual string Title { get; set; }
@@ -21,6 +22,15 @@ namespace MiniTrello.Domain.Entities
             {
                 _members.Add(member);
             }
+        }
+
+        public virtual void addlane(Lane lane)
+        {
+            if (!_lanes.Contains(lane))
+            {
+                _lanes.Add(lane);
+            }
+
         }
     }
 }

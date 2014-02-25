@@ -83,7 +83,7 @@ namespace MiniTrello.Api.Controllers
         public HttpResponseMessage EditProfile([FromBody] AccountUpdateModel model, string accessToken)
         {
             //var accountToedit = _readOnlyRepository.GetById<Account>(model.Id);
-            Account accountToedit = _readOnlyRepository.GetByName<Account>(model.FirstName);
+            Account accountToedit = _readOnlyRepository.GetByName<Account>(model.FirstName); //GetByName<Account>(model.FirstName);
             Account account = _writeOnlyRepository.Update(accountToedit);
             if (account != null)
             {

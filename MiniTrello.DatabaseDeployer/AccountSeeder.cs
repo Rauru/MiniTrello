@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using DomainDrivenDatabaseDeployer;
 using FizzWare.NBuilder;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
 using MiniTrello.Domain.Entities;
 using NHibernate;
+using NHibernate.Tool.hbm2ddl;
 
 namespace MiniTrello.DatabaseDeployer
 {
@@ -30,5 +33,18 @@ namespace MiniTrello.DatabaseDeployer
                 _session.Save(account);
             }
         }
+
+       /* public void CreateDatabaseSchemaFromMappingFiles()
+        {
+            FluentConfiguration config = Fluently.Configure()
+            .Database(MsSqlConfiguration.MsSql2008.ConnectionString("......"))
+            .Mappings(
+                m => m.FluentMappings.Add(typeof(Account)
+            ));
+
+            config.ExposeConfiguration(
+                      c => new SchemaExport(c).Execute(true, true, false))
+                 .BuildConfiguration();
+        }*/
     }
 }

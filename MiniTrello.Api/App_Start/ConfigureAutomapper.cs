@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using AutoMapper;
 using MiniTrello.Api.Models;
 using MiniTrello.Domain.Entities;
@@ -15,6 +16,15 @@ namespace MiniTrello.Api
             //Mapper.CreateMap<DemographicsEntity, DemographicsModel>().ReverseMap();
             //Mapper.CreateMap<IReportEntity, IReportModel>()
             //    .Include<DemographicsEntity, DemographicsModel>();
+           /* Database.SetInitializer<Account>(new DropCreateDatabaseIfModelChanges<AccountRegisterModel>());
+            var cfg = new Configuration();
+            cfg.Configure();
+            cfg.AddAssembly(typeof(aClassFromYourProject).Assembly);
+            new SchemaExport(cfg).Execute(false, true, false, false); */
+            var cfg = new NHibernate.Cfg.Configuration();
+            cfg.Configure();
+            cfg.AddAssembly(typeof(AnEntityInYourMappingLib).Assembly);
+            new NHibernate.Tool.hbm2ddl.SchemaExport(cfg).Execute(false, true, false, false);
         }
     }
 }
