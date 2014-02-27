@@ -14,7 +14,7 @@ namespace MiniTrello.DatabaseDeployer
         static void Main(string[] args)
         {
             MsSqlConfiguration databaseConfiguration = MsSqlConfiguration.MsSql2008.ShowSql().
-               // ConnectionString(x => x.FromConnectionStringWithKey("MiniTrello.remote"));
+                //ConnectionString(x => x.FromConnectionStringWithKey("MiniTrello.remote"));
                 ConnectionString(x => x.FromConnectionStringWithKey("MiniTrello.Remote"));
 
             DomainDrivenDatabaseDeployer.DatabaseDeployer dd = null;
